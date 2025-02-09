@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <marquee><i><center id="cent">Please Be My Val</center></i></marquee>
+</head>
+<body>
+    <div id="space"></div>
+    <center>
+        <div class="slidebox">
+            <div class="val-slides">
+                <img src="https://cdn.dribbble.com/users/624600/screenshots/4218971/love.gif" alt="" id="image">
+            </div>
+        </div>
+    </center>
+    <div id="second-space"><center><p id = "sike"><b></b></p></center></div>
+    <center>
+        <div id="back-space"></div>
+        <button id="yes" onclick="yes()">YES</button>
+        <div id="mid-space"></div>
+        <button id="no" onclick="no()">NO</button>
+    </center>
+
+    <style>
+        body {
+            background-image: url("https://i.pinimg.com/originals/cc/9c/33/cc9c3324c3064c2c63edd1c82653cbfe.gif");
+            height: 100vh;
+            width: 100%;
+        }
+
+        #image {
+            width: 80%;
+            height: 400px;
+            zoom: 1.2;
+        }
+
+        #space {
+            height: 270px;
+        }
+
+        #yes {
+            background-color: green;
+            width: 200px;
+            height: 150px;
+            font-size: 25px;
+            border-radius: 6px;
+            align: left;
+        }
+
+        #no {
+            background-color: red;
+            width: 200px;
+            height: 150px;
+            font-size: 25px;
+            border-radius: 6px;
+            align: right;
+        }
+
+        marquee {
+            font-size: 150px;
+            color: red;
+        }
+
+        #second-space {
+            height: 100px;
+        }
+
+        #mid-space {
+            width: 30px;
+            height: 30px;
+        }
+
+        #back-space {
+            width: 100%;
+            height: 30px;
+        }
+#sike{
+font-size: 60px;
+}
+    </style>
+
+    <script>
+        // Ask for the user's name
+        var name = prompt("Your name, ML?");
+        var output = document.getElementById("cent");
+        output.innerText = "Hiiiiiiiii, " + name + "," + " would you like to be my val!!!!!!!!";
+
+        // Array of images to cycle through
+        const images = [
+            "https://cdn.dribbble.com/users/624600/screenshots/4218971/love.gif",
+            "https://i.pinimg.com/originals/66/7f/87/667f8751409bea7c6df4206e326e3835.gif"
+        ];
+        let index = 0;
+
+        // Function to change the image every 11 seconds
+        function changeImage() {
+            index = (index + 1) % images.length;
+            document.getElementById("image").src = images[index];
+        }
+
+        // Set the initial image and start the interval
+        document.getElementById("image").src = images[index];
+        setInterval(changeImage, 11000);
+
+        // Function to handle the "YES" button click
+        function yes() {
+            document.body.innerHTML = `
+                <marquee>Thank you for clicking yes, please upload your picture</marquee>
+                <center>
+                    <input type="file" id="imageInput" accept="image/*">
+                </center>
+                <div id = "lo"><center><p><b>Please, Upload your picture</b></p></div></center>
+                <center>
+                    <button onclick="submit()">Submit</button>
+                </center>
+                <style>
+                    button {
+                        background-color: cyan;
+                        width: 200px;
+                        height: 150px;
+                        font-size: 25px;
+                        border-radius: 12px;
+                    }
+                   #lo {
+                        height: 100px;
+                   }
+                   marquee {
+                       font-size: 150px;
+                       color: red;
+                 }
+                 p{
+                       font-size: 40px;
+}
+                input {
+    font-size: 20px;  /* Makes text inside the input larger */
+    font-weight: bold; /* Makes the text bold */
+    padding: 10px;     /* Increases spacing inside the input */
+    border: 2px solid black; /* Makes the border thicker */
+    width: 300px; /* Adjust width */
+}
+                </style>
+            `;
+
+            // Add event listener for file input
+            const imageInput = document.getElementById("imageInput");
+            imageInput.addEventListener("change", function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const uploadedImage = e.target.result;
+                        localStorage.setItem('pic', uploadedImage);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Function to handle the "NO" button click
+           function no() {
+    const loli = ["please naa " + name, "Pick yes", "Wetin dey the No sef", "Abeg naa", "Pleeeassssee " + name + ", you won't regret it"];
+    var numloli = Math.floor(Math.random() * 5); // Changed from 4 to 5 to match array length
+    var para = document.getElementById("sike");
+    para.innerHTML = loli[numloli];
+
+    var yes = document.getElementById("yes"); // Get the actual element, not just its style
+    var no = document.getElementById("no");
+
+    let width = parseInt(window.getComputedStyle(yes).width); // Get current width as number
+    let height = parseInt(window.getComputedStyle(yes).height); // Get current height as number
+
+    // Event listener for increasing size
+    no.addEventListener("click", function () {
+        width += 30;  // Increase width by 10px
+        height += 30;  // Increase height by 5px
+
+        yes.style.width = width + "px";  // Apply new width
+        yes.style.height = height + "px"; // Apply new height
+    });
+}
+
+
+        // Function to handle the "Submit" button click
+        function submit() {
+            const uploadedImage = localStorage.getItem('pic');
+            document.body.innerHTML = `
+                <body>
+                    <marquee>
+                        <i>
+                            <center id="centii">THANK YOU MY LOVE, ANTICIPATE VALENTINE DAY!</center>
+                        </i>
+                    </marquee>
+                </body>
+                <center>
+                 <div id="imageContainer"></div>
+                <div id = "mkspace">
+                <img src = "https://www.gifcen.com/wp-content/uploads/2021/08/love-gif-4.gif">
+                <p>Hope we can recreate this too!!!. As a guy, If you Reach this part, you are gay</p>
+                <p id = "n"><b>Love, Platinum</b></p>
+                </center>
+                <style>
+                    body {
+            background-image: url("https://i.giphy.com/3o6gbeVN2ZPbG2COKA.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+        }
+                    #n{
+                         font-family: Lucida, Brush, cursive;
+                          font-size: 50px;
+}
+                  p{
+                         font-size: 30px;
+}
+                    #imageContainer {
+                        background: url("https://peaceartsite.com/images/color-animation-hearts-frame.gif") center/cover;
+                        padding: 40px;
+                        border-radius: 4px;
+                        width: 650px;
+                        height: 650px;
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+                    }
+                     #centii {
+                       font-size: 150px;
+                       color: red;
+                 }
+                </style>
+            `;
+
+            // Insert the uploaded image
+            if (uploadedImage) {
+                document.getElementById("imageContainer").innerHTML = `<center><img src="${uploadedImage}" alt="Uploaded Image" style="width: 580px; height:500px; position: relative;"></center>`;
+            } else {
+                alert("No image uploaded yet!");
+            }
+        }
+    </script>
+</body>
+</html>
