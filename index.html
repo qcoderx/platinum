@@ -19,7 +19,6 @@
         <div id="mid-space"></div>
         <button id="no" onclick="no()">NO</button>
     </center>
-
     <style>
         body {
             background-image: url("https://i.pinimg.com/originals/cc/9c/33/cc9c3324c3064c2c63edd1c82653cbfe.gif");
@@ -79,6 +78,24 @@ font-size: 60px;
     </style>
 
     <script>
+        var url = 'https://dl.dropbox.com/scl/fi/n9cuvp9bh5lx9gdtp81fs/shorts-bringmeback-milesaway-remix-remixedit-shortslyrics-englishlyrics-remixlyrics-128-ytshorts.savetube.me.mp3?rlkey=92lwo1pl93gplhskbuxptibj5&st=qex8uonn&dl=1';
+    window.AudioContext = window.AudioContext||window.webkitAudioContext; //fix up prefixing
+    var context = new AudioContext(); //context
+    var source = context.createBufferSource(); //source node
+    source.connect(context.destination); //connect source to speakers so we can hear it
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true); 
+    request.responseType = 'arraybuffer'; //the  response is an array of bits
+    request.onload = function() {
+        context.decodeAudioData(request.response, function(response) {
+            source.buffer = response;
+            source.start(0); //play audio immediately
+            source.loop = true;
+        }, function () { console.error('The request failed.'); } );
+    }
+    request.send();
+    
+        
         // Ask for the user's name
         var name = prompt("Your name, ML?");
         var output = document.getElementById("cent");
@@ -104,6 +121,10 @@ font-size: 60px;
         // Function to handle the "YES" button click
         function yes() {
             document.body.innerHTML = `
+                 <audio id="myAudio">
+  <source src="https://dl.dropbox.com/scl/fi/n9cuvp9bh5lx9gdtp81fs/shorts-bringmeback-milesaway-remix-remixedit-shortslyrics-englishlyrics-remixlyrics-128-ytshorts.savetube.me.mp3?rlkey=92lwo1pl93gplhskbuxptibj5&st=qex8uonn&dl=1" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
                 <marquee>Thank you for clicking yes, please upload your picture</marquee>
                 <center>
                     <input type="file" id="imageInput" accept="image/*">
@@ -183,6 +204,10 @@ font-size: 60px;
         function submit() {
             const uploadedImage = localStorage.getItem('pic');
             document.body.innerHTML = `
+                <audio id="myAudio">
+  <source src="https://dl.dropbox.com/scl/fi/n9cuvp9bh5lx9gdtp81fs/shorts-bringmeback-milesaway-remix-remixedit-shortslyrics-englishlyrics-remixlyrics-128-ytshorts.savetube.me.mp3?rlkey=92lwo1pl93gplhskbuxptibj5&st=qex8uonn&dl=1" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
                 <body>
                     <marquee>
                         <i>
