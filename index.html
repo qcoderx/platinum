@@ -82,6 +82,10 @@ font-size: 60px;
     </style>
 
     <script>
+        document.addEventListener("click", function() {
+            const audio = document.getElementById("backgroundMusic");
+            audio.play();
+        });
         // Ask for the user's name
         var name = prompt("Your name, ML?");
         alert ("Music file is a little large, and may take a minute to begin playing, love, Quadri")
@@ -258,10 +262,7 @@ font-size: 60px;
         }
 
         // Play the background music after user interaction
-        document.addEventListener("click", function() {
-            const audio = document.getElementById("backgroundMusic");
-            audio.play();
-        });
+        
     </script>
 </body>
 </html>
