@@ -82,8 +82,21 @@ font-size: 60px;
     </style>
 
     <script>
-        const audio = document.getElementById("backgroundMusic");
-            audio.play();
+        // Function to attempt autoplay
+        function attemptAutoplay() {
+            const audio = document.getElementById("backgroundMusic");
+            audio.play().then(() => {
+                console.log("Audio is playing");
+            }).catch(error => {
+                console.log("Autoplay was prevented. Please interact with the page to play audio.");
+                // Show a message to the user to interact with the page
+                alert("Please click anywhere on the page to enable audio.");
+            });
+        }
+
+        // Attempt autoplay when the page loads
+        window.addEventListener("load", attemptAutoplay);
+
         // Ask for the user's name
         var name = prompt("Your name, ML?");
         alert ("Music file is a little large, and may take a minute to begin playing, love, Quadri")
@@ -258,9 +271,6 @@ font-size: 60px;
             const audio = document.getElementById("myAudio");
             audio.play();
         }
-
-        // Play the background music after user interaction
-        
     </script>
 </body>
 </html>
