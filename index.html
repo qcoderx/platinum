@@ -82,24 +82,9 @@ font-size: 60px;
     </style>
 
     <script>
-        // Function to attempt autoplay
-        function attemptAutoplay() {
-            const audio = document.getElementById("backgroundMusic");
-            audio.play().then(() => {
-                console.log("Audio is playing");
-            }).catch(error => {
-                console.log("Autoplay was prevented. Please interact with the page to play audio.");
-                // Show a message to the user to interact with the page
-                alert("Please click anywhere on the page to enable audio.");
-            });
-        }
-
-        // Attempt autoplay when the page loads
-        window.addEventListener("load", attemptAutoplay);
-
         // Ask for the user's name
         var name = prompt("Your name, ML?");
-        alert ("CLICK ANY WHERE ON THE PAGE TO BEGIN MUSIC PLAY!!!")
+        alert("TAP ANYWHERE ON THE SCREEN FOR MUSIC PLAY")
         var output = document.getElementById("cent");
         output.innerText = "Hiiiiiiiii, " + name + "," + " would you like to be my val!!!!!!!!";
 
@@ -271,6 +256,12 @@ font-size: 60px;
             const audio = document.getElementById("myAudio");
             audio.play();
         }
+
+        // Play the background music after user interaction
+        document.addEventListener("click", function() {
+            const audio = document.getElementById("backgroundMusic");
+            audio.play();
+        });
     </script>
 </body>
 </html>
